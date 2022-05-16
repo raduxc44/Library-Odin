@@ -1,3 +1,85 @@
+let myLibrary = [];
+let bookContainer = document.getElementsByClassName('book-container')[0];
+
+class Book {
+
+    constructor(title, author, pages, haveRead) {
+
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.haveRead = haveRead;
+
+    }
+
+    info() {
+
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.haveRead}.`
+
+    }
+
+}
+
+function addBookToLibrary(title, author, pages, haveRead) {
+
+    myLibrary.push(new Book(title, author, pages, haveRead))
+
+}
+
+function displayLibrary (arr) {
+
+    for(a = 0; a < myLibrary.length; a++) {
+
+        let bookCard = document.createElement('div');
+        bookContainer.appendChild(bookCard);
+        bookCard.classList.add('book-body')
+
+        let bookCardUpper = document.createElement('div');
+        bookCard.appendChild(bookCardUpper);
+        bookCardUpper.classList.add('book-top');
+
+        let bookCardLower = document.createElement('div');
+        bookCard.appendChild(bookCardLower);
+        bookCardLower.classList.add('book-low');
+
+        let bookTitle = document.createElement('p');
+        bookCardUpper.appendChild(bookTitle);
+        bookTitle.classList.add('title')
+        bookTitle.textContent = myLibrary[a].title;
+
+        let bookAuthor = document.createElement('p');
+        bookCardUpper.appendChild(bookAuthor);
+        bookAuthor.classList.add('author');
+        bookAuthor.textContent = myLibrary[a].author;
+
+        let bookPageNumber = document.createElement('p');
+        bookCardLower.appendChild(bookPageNumber);
+        bookPageNumber.classList.add('nr-pag');
+        bookPageNumber.textContent = myLibrary[a].pages;
+
+        let bookHaveRead = document.createElement('p');
+        bookCardLower.appendChild(bookHaveRead);
+        bookHaveRead.classList.add('read-status');
+        bookHaveRead.textContent = myLibrary[a].haveRead;
+
+    }
+}
+
+
+
+
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 255, 'Not read yet')
+addBookToLibrary('A Tale of Two Cities', 'Charles Dickens', 290, 'Already read')
+addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read yet')
+
+displayLibrary(myLibrary)
+
+
+
+
+
+
+
 let bookBody = document.getElementsByClassName('book-body');
 
 function bookColorPicker () {
@@ -64,42 +146,3 @@ let colorChangeButt = document.querySelector('button')
 
 
 
-let myLibrary = [];
-
-class Book {
-
-    constructor(title, author, pages, haveRead) {
-
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.haveRead = haveRead;
-
-    }
-
-    info() {
-
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.haveRead}.`
-
-    }
-
-}
-
-function addBookToLibrary(book) {
-
-    myLibrary.push(book)
-
-}
-
-let hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 255, 'not read yet');
-let twoCities = new Book('A Tale of Two Cities', 'Charles Dickens', 290, 'already read');
-let littlePrince = new Book('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'not read yet');
-
-
-
-addBookToLibrary(hobbit);
-addBookToLibrary(twoCities);
-addBookToLibrary(littlePrince);
-
-
-let libraryContainer = document.getElementsByClassName('book-container');
