@@ -94,15 +94,34 @@ header {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 180px;
-    width: 180px;
+    justify-content: space-around;
+    height: 200px;
+    width: 200px;
 
 }
 
 .book-body p {
     
     margin: 0;
+
+}
+
+.book-top {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.book-low{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 250px;
 
 }
 
@@ -116,8 +135,9 @@ header {
 .author {
 
     text-align: end;
+    width: 80%;
     padding-top: 5%;
-    padding-bottom: 30%;
+    padding-bottom: 15%;
     font-size: 15px;
 
 }
@@ -142,6 +162,10 @@ header {
 .new-butt {
 
     margin-bottom: 30px;
+    border-radius: 40%;
+    padding: 10px;
+    background-color: red;
+    font-size: 15px;
 
 }
 
@@ -161,5 +185,12 @@ header {
 .hidden {
 
     display: none;
+
+}
+
+.butt {
+
+    background-color: black;
+    color: red;
 
 }

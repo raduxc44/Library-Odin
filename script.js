@@ -53,6 +53,25 @@ function displayLibrary (arr) {
         bookAuthor.classList.add('author');
         bookAuthor.textContent = myLibrary[a].author;
 
+        let bookRemoveButt = document.createElement('button')
+        bookCardUpper.appendChild(bookRemoveButt);
+        bookRemoveButt.classList.add('butt');
+        bookRemoveButt.textContent = 'REMOVE';
+        bookRemoveButt.addEventListener('click', function (){bookCard.remove()})
+
+        let readButt = document.createElement('button');
+        bookCardLower.appendChild(readButt);
+        readButt.textContent = 'Mark as read'
+        readButt.classList.add('butt');
+
+        function readButtFunction() {
+
+            readButt.style.color = 'green';
+
+        }
+
+        readButt.addEventListener('click', function() {readButtFunction()})
+
         let bookPageNumber = document.createElement('p');
         bookCardLower.appendChild(bookPageNumber);
         bookPageNumber.classList.add('nr-pag');
