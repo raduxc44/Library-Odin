@@ -130,24 +130,26 @@ let bookBody = document.getElementsByClassName('book-body');
     }
 
     
-})()    
+})();    
 
 
 
-function newBookButton () {
-
-    function bookCreator () {
-
-        let formBody = document.createElement('div');
-        creatorButton.appendChild(formBody);
-
-    }
-
+(function () {
 
     let creatorButton = document.getElementsByClassName('new-butt')[0]
-    creatorButton.addEventListener('click', bookCreator());
 
-}
+
+    function showForm () {document.getElementsByClassName('form-body')[0].style.display = 'block';}
+
+
+    creatorButton.addEventListener('click', showForm);
+
+})();
+
+
+    
+
+
 
 
 
