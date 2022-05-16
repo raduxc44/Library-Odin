@@ -1,0 +1,139 @@
+html {background-color: white;}
+
+
+body {
+
+    margin: 0;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgb(26, 26, 25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+header {
+
+    height: 15%;
+    font-family: 'Open Sans', sans-serif;
+    color: #f5f5f5;
+    text-shadow: 0px -2px 4px #fff, 0px -2px 5px #FF3, 0px -10px 20px   #F90;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+
+}
+
+.main-wrapper {
+
+    background: linear-gradient(90deg, rgba(255,80,0,1) 17%, rgba(255,80,0,1) 39%, rgba(0,151,255,1) 72%);
+    width: 1240px;
+    height: 648px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.book-container {
+
+    background-color: rgb(26, 26, 25);
+    z-index: 1;
+    width: 98%;
+    height: 97%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.first-color {
+
+    background-color: red;
+
+}
+
+.second-color {
+
+    background-color : blue;
+
+}
+
+.third-color {
+
+    background-color : yellow;
+
+}
+
+.fourth-color {
+
+    background-color : green;
+
+}
+
+.fifth-color {
+
+    background-color : orange;
+
+}
+
+.sixth-color {
+
+    background-color : purple;
+
+}
+
+.book-body {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    width: 180px;
+
+}
+
+.book-body p {
+    
+    margin: 0;
+
+}
+
+.title {
+
+    text-align: center;
+    font-size: 20px;
+
+}
+
+.author {
+
+    text-align: end;
+    padding-top: 5%;
+    padding-bottom: 30%;
+    font-size: 15px;
+
+}
+
+.nr-pag, .read-status {
+
+    text-align: center;
+
+}
+
+.read-container {
+
+    height: 5%;
+    font-family: 'Open Sans', sans-serif;
+    color: #f5f5f5;
+    text-shadow: 0px -2px 4px #fff, 0px -2px 5px #FF3, 0px -10px 20px   #F90;
+    font-size: 20px;
+
+}
