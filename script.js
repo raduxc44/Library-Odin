@@ -1,5 +1,4 @@
 let myLibrary = [];
-let bookContainer = document.getElementsByClassName('book-container')[0];
 
 class Book {
 
@@ -27,6 +26,8 @@ function addBookToLibrary(title, author, pages, haveRead) {
 }
 
 function displayLibrary (arr) {
+
+    let bookContainer = document.getElementsByClassName('book-container')[0];
 
     for(a = 0; a < myLibrary.length; a++) {
 
@@ -82,7 +83,7 @@ displayLibrary(myLibrary)
 
 let bookBody = document.getElementsByClassName('book-body');
 
-function bookColorPicker () {
+(function bookColorPicker () {
 
     for( i = 0; i < bookBody.length; i++) {
     while (!bookBody[i].classList.contains('colored')) {
@@ -129,11 +130,24 @@ function bookColorPicker () {
     }
 
     
-}    
+})()    
 
-let colorChangeButt = document.querySelector('button')
 
-    colorChangeButt.addEventListener ('click', bookColorPicker)
+
+function newBookButton () {
+
+    function bookCreator () {
+
+        let formBody = document.createElement('div');
+        creatorButton.appendChild(formBody);
+
+    }
+
+
+    let creatorButton = document.getElementsByClassName('new-butt')[0]
+    creatorButton.addEventListener('click', bookCreator());
+
+}
 
 
 
