@@ -25,11 +25,16 @@ function addBookToLibrary(title, author, pages, haveRead) {
 
 }
 
-function displayLibrary (arr) {
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 255, 'Not read yet');
+addBookToLibrary('A Tale of Two Cities', 'Charles Dickens', 290, 'Already read');
+addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read yet');
+
+
+(function displayLibrary () {
 
     let bookContainer = document.getElementsByClassName('book-container')[0];
 
-    for(a = 0; a < myLibrary.length; a++) {
+    for(let a = 0; a < myLibrary.length; a++) {
 
         let bookCard = document.createElement('div');
         bookContainer.appendChild(bookCard);
@@ -61,17 +66,39 @@ function displayLibrary (arr) {
 
         let readButt = document.createElement('button');
         bookCardLower.appendChild(readButt);
-        readButt.textContent = 'Mark as read'
         readButt.classList.add('butt');
+        readButt.innerText = 'Check read status';
 
-        function readButtFunction() {
 
-            readButt.style.color = 'green';
+
+                
+        function readButtFunction () {
+
+            bookHaveRead.classList.remove('hidden')
+
+            if(myLibrary[a].haveRead == 'Already read') {
+
+                readButt.style.color = 'red';
+                readButt.innerText = 'Mark as unread';
+                myLibrary[a].haveRead = 'Not read yet';
+                bookHaveRead.textContent = 'Already read';
+
+            } else
+            
+            if(myLibrary[a].haveRead == 'Not read yet') {
+
+                readButt.style.color = 'green';
+                readButt.innerText = 'Mark as read';
+                myLibrary[a].haveRead = 'Already read';
+                bookHaveRead.textContent = 'Not read yet';
+
+            }
 
         }
 
-        readButt.addEventListener('click', function() {readButtFunction()})
+        readButt.addEventListener('click', readButtFunction)
 
+        
         let bookPageNumber = document.createElement('p');
         bookCardLower.appendChild(bookPageNumber);
         bookPageNumber.classList.add('nr-pag');
@@ -81,23 +108,13 @@ function displayLibrary (arr) {
         bookCardLower.appendChild(bookHaveRead);
         bookHaveRead.classList.add('read-status');
         bookHaveRead.textContent = myLibrary[a].haveRead;
+        bookHaveRead.classList.add('hidden')
 
+            
     }
-}
 
 
-
-
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 255, 'Not read yet')
-addBookToLibrary('A Tale of Two Cities', 'Charles Dickens', 290, 'Already read')
-addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read yet')
-
-displayLibrary(myLibrary)
-
-
-
-
-
+})();
 
 
 let bookBody = document.getElementsByClassName('book-body');
