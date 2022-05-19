@@ -34,7 +34,18 @@ addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read
 
     let bookContainer = document.getElementsByClassName('book-container')[0];
 
+    let readCount = 0;
+
+    let readCountContainer = document.getElementsByClassName('read-container')[0];
+
     for(let a = 0; a < myLibrary.length; a++) {
+
+        if(myLibrary[a].haveRead == 'Already read') {
+            
+            readCount ++;
+            readCountContainer.innerText = `Read : ${readCount} / ${myLibrary.length}`;
+
+        }
 
         let bookCard = document.createElement('div');
         bookContainer.appendChild(bookCard);
@@ -62,38 +73,39 @@ addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read
         bookCardUpper.appendChild(bookRemoveButt);
         bookRemoveButt.classList.add('butt');
         bookRemoveButt.textContent = 'REMOVE';
-        bookRemoveButt.addEventListener('click', function (){bookCard.remove()})
+        bookRemoveButt.addEventListener('click', function () {   bookCard.remove()   })
 
         let readButt = document.createElement('button');
         bookCardLower.appendChild(readButt);
-        readButt.classList.add('butt');
-        readButt.innerText = 'Check read status';
-
-
+        readButt.classList.add('butt'); 
+        
+        if(myLibrary[a].haveRead == 'Already read') {readButt.innerText = 'Mark as unread'; readButt.style.color = 'red';}
+        else if(myLibrary[a].haveRead == 'Not read yet') {readButt.innerText = 'Mark as read'; readButt.style.color = 'green';}
 
                 
         function readButtFunction () {
 
-            bookHaveRead.classList.remove('hidden')
-
-            if(myLibrary[a].haveRead == 'Already read') {
-
-                readButt.style.color = 'red';
-                readButt.innerText = 'Mark as unread';
-                myLibrary[a].haveRead = 'Not read yet';
-                bookHaveRead.textContent = 'Already read';
-
-            } else
-            
-            if(myLibrary[a].haveRead == 'Not read yet') {
+            if(myLibrary[a].haveRead == 'Already read' && readButt.innerText == 'Mark as unread') {
 
                 readButt.style.color = 'green';
                 readButt.innerText = 'Mark as read';
-                myLibrary[a].haveRead = 'Already read';
+                myLibrary[a].haveRead = 'Not read yet';
                 bookHaveRead.textContent = 'Not read yet';
+                readCount --;
+                readCountContainer.innerText = `Read : ${readCount} / ${myLibrary.length}`;
+
+            } else
+            
+            if(myLibrary[a].haveRead == 'Not read yet' && readButt.innerText == 'Mark as read') {
+
+                readButt.style.color = 'red';
+                readButt.innerText = 'Mark as unread';
+                myLibrary[a].haveRead = 'Already read';
+                bookHaveRead.textContent = 'Already read';
+                readCount ++;
+                readCountContainer.innerText = `Read : ${readCount} / ${myLibrary.length}`;
 
             }
-
         }
 
         readButt.addEventListener('click', readButtFunction)
@@ -108,18 +120,17 @@ addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read
         bookCardLower.appendChild(bookHaveRead);
         bookHaveRead.classList.add('read-status');
         bookHaveRead.textContent = myLibrary[a].haveRead;
-        bookHaveRead.classList.add('hidden')
 
-            
+
     }
+
 
 
 })();
 
-
-let bookBody = document.getElementsByClassName('book-body');
-
 (function bookColorPicker () {
+
+    let bookBody = document.getElementsByClassName('book-body');
 
     for( i = 0; i < bookBody.length; i++) {
     while (!bookBody[i].classList.contains('colored')) {
