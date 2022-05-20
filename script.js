@@ -28,6 +28,10 @@ function addBookToLibrary(title, author, pages, haveRead) {
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 255, 'Not read yet');
 addBookToLibrary('A Tale of Two Cities', 'Charles Dickens', 290, 'Already read');
 addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read yet');
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 255, 'Not read yet');
+addBookToLibrary('A Tale of Two Cities', 'Charles Dickens', 290, 'Already read');
+addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read yet');
+
 
 
 (function displayLibrary () {
@@ -68,12 +72,6 @@ addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read
         bookCardUpper.appendChild(bookAuthor);
         bookAuthor.classList.add('author');
         bookAuthor.textContent = myLibrary[a].author;
-
-        let bookRemoveButt = document.createElement('button')
-        bookCardUpper.appendChild(bookRemoveButt);
-        bookRemoveButt.classList.add('butt');
-        bookRemoveButt.textContent = 'REMOVE';
-        bookRemoveButt.addEventListener('click', function () {   bookCard.remove()   })
 
         let readButt = document.createElement('button');
         bookCardLower.appendChild(readButt);
@@ -121,6 +119,23 @@ addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupéry', 96, 'Not read
         bookHaveRead.classList.add('read-status');
         bookHaveRead.textContent = myLibrary[a].haveRead;
 
+
+        let bookRemoveButt = document.createElement('button')
+        bookCardUpper.appendChild(bookRemoveButt);
+        bookRemoveButt.classList.add('butt');
+        bookRemoveButt.textContent = 'REMOVE';
+        bookRemoveButt.addEventListener('click', function () {   
+            
+            console.log(`readCount -  ${readCount}`)
+            console.log(`length - ${myLibrary.length}`)
+            bookCard.remove(); 
+            if(readButt.innerText == 'Mark as unread') {readCount--};
+            myLibrary.splice(myLibrary.indexOf(myLibrary[a]), 1);
+            readCountContainer.innerText = `Read : ${readCount} / ${myLibrary.length}`;
+            console.log(`readCount -  ${readCount}`)
+            console.log(`length - ${myLibrary.length}`)
+
+        })
 
     }
 
